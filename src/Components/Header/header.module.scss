@@ -1,15 +1,15 @@
 .header {
-    height: 10vh; // Fixed height
-    width: 100%; // Full width
+    height: 10vh; 
+    width: 100%;
     display: flex;
-    align-items: center; // Vertically align items
-    justify-content: space-between; // Ensure items stay in one row
-    padding: 0 0; // Add horizontal padding
-    background-color: black; // Background color
-    position: fixed; // Fixed at the top
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0 0; 
+    background-color: black; 
+    position: fixed; 
     top: 0;
     z-index: 1000;
-    overflow: hidden; // Prevent overflow
+    overflow: hidden; 
   }
   
   .logoContainer {
@@ -31,8 +31,8 @@
   }
   
   .search {
-    width: 100%; // Let it adapt to container
-    max-width: 400px; // Prevent excessive width
+    width: 100%; 
+    max-width: 400px; 
   }
   
   .buttonContainer {
@@ -40,51 +40,62 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    margin-right: 4vw;
   }
   
   .button {
     background-color: #d4af37;
     color: black;
     font-weight: 600;
-    height: 5vh; // Fixed button height
-    width: auto; // Allow flexible width
-    padding: 0 1rem; // Horizontal padding for responsive text
+    height: 5vh; 
+    width: auto; 
+    padding: 0 1rem;
     border: 1px solid white;
-    white-space: nowrap; // Prevent text from breaking
+    white-space: nowrap; 
+  }
+  .button:hover{
+    background-color: #d4af37 !important;
   }
   
-  /* Media Queries */
+ 
   @media (max-width: 1024px) {
     .search {
       max-width: 300px; // Reduce search width
     }
   
     .button {
-      padding: 0 0.8rem; // Reduce padding for smaller screens
+      padding: 0 0.8rem; 
     }
   }
   
   @media (max-width: 768px) {
     .search {
-      max-width: 200px; // Further reduce search bar width
+      max-width: 200px; 
     }
   
     .button {
-      font-size: 12px; // Adjust text size for the button
+      font-size: 12px;
+      margin-right: 5vw;
+      height: 3vh; 
+    }
+    .logo {
+      height: 50%; 
+      width: auto;
+      object-fit: contain;
     }
   }
   
   @media (max-width: 480px) {
     .logo {
-      height: 60%; // Scale down the logo
+      height: 60%;
     }
   
     .search {
-      max-width: 150px; // Shrink search bar
+      max-width: 150px; 
     }
   
     .button {
-      font-size: 10px; // Smaller font size for mobile
+      font-size: 10px; 
       padding: 0 0.5rem;
     }
   }

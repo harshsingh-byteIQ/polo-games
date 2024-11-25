@@ -4,6 +4,7 @@ import SoccerSection from "../Components/Tabs/Soccer";
 import TennisSection from "../Components/Tabs/Tennis";
 import HorseRidding from "../Components/Tabs/HorseRidding";
 import InPlay from "../Components/Tabs/InPlay";
+import Footer from "../Components/Footer";
 
 interface RouteBase {
   path: string;
@@ -32,6 +33,7 @@ export const globalRoutes = [
         <SoccerSection></SoccerSection>
         <TennisSection></TennisSection>
         <HorseRidding></HorseRidding>
+        <Footer></Footer>
       </>
     ),
   },
@@ -44,6 +46,7 @@ export const globalRoutes = [
         <SoccerSection></SoccerSection>
         <TennisSection></TennisSection>
         <HorseRidding></HorseRidding>
+        <Footer></Footer>
       </>
     ),
   },
@@ -56,23 +59,39 @@ export const globalRoutes = [
         <SoccerSection></SoccerSection>
         <TennisSection></TennisSection>
         <HorseRidding></HorseRidding>
+        <Footer></Footer>
       </>
     ),
   },
   {
     path: "cricket",
-    element: <CricketSection></CricketSection>,
+    element: <>
+    <CricketSection></CricketSection>
+    <Footer></Footer>
+    </>
   },
   {
     path: "soccer",
-    element: <SoccerSection></SoccerSection>,
+    element: 
+    <>
+    <SoccerSection></SoccerSection>,
+    <Footer></Footer>
+    </>
   },
   {
     path: "tennis",
-    element: <TennisSection></TennisSection>,
+    element: 
+    <>
+      <TennisSection></TennisSection>,
+      <Footer></Footer>
+    </>
   },
   {
     path: "horse-racing",
-    element: <HorseRidding></HorseRidding>,
+    element: 
+    <>
+    <HorseRidding></HorseRidding>
+    <Footer></Footer>
+    </>
   },
 ];
