@@ -1,4 +1,3 @@
-import React from "react";
 import { HomeOutlined, PlayCircleOutlined, TrophyOutlined, SmileOutlined } from "@ant-design/icons";
 import styles from "./footer.module.scss"
 
