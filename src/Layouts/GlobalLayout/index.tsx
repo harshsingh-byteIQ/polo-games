@@ -30,6 +30,7 @@ const GlobalLayout = () => {
     window.addEventListener("resize", handleResize);
 
     return () => {
+      console.log(windowWidth)
       window.removeEventListener("resize", handleResize);
     };
   }, []);
