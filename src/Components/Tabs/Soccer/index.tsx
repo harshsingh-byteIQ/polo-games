@@ -1,6 +1,6 @@
 import { Badge, Row, Col } from "antd";
 import { PlayCircleOutlined, TagOutlined } from "@ant-design/icons";
-
+import styles from "../tabs.module.scss"
 const dataSource = [
     {
       key: "1",
@@ -61,40 +61,19 @@ const SoccerSection = () => {
   return (
     <div style={{ margin: "16px" }}>
       <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          padding: "10px",
-          background:
-            "linear-gradient(to right,#d4af37 0%,#d4af37 20%,#c19a6b 25%,rgba(212, 175, 55, 0) 30%,rgba(0, 0, 0, 0.7) 40%,black 50%,black 100%)",
-          color: "#fff",
-          borderRadius: "8px 8px 0px 0px",
-        }}
+         className={styles.tableWrapper}
       >
         <PlayCircleOutlined style={{ fontSize: "24px", marginRight: "16px" }} />
         <h3 style={{ margin: 0 }}>Soccer</h3>
       </div>
 
       <div
-        style={{
-          background: "#fff",
-          borderRadius: "0px 0px 8px 8px",
-
-          display: "flex",
-          flexDirection: "column",
-          overflowX: "auto",
-        }}
+         className={styles.table}
       >
         {dataSource.map((item) => (
           <div
             key={item.key}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              borderBottom: "1px solid #ddd",
-              padding: "8px",
-              minWidth: "300px",
-            }}
+            className={styles.tableHeader}
           >
             <div
               style={{
@@ -118,7 +97,7 @@ const SoccerSection = () => {
               </div>
             </div>
 
-            <div style={{ flex: 1, textAlign: "center" }}>
+            <div className={styles.tagIcon}>
               <TagOutlined style={{ fontSize: "24px" }} />
             </div>
 

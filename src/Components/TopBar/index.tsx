@@ -85,7 +85,7 @@ const TopBar = () => {
           background: "#fff", // Optional: Match the sidebar background color
         }}
         headerStyle={{
-          display: "none", // Remove the default drawer header
+          display: "none",
         }}
       >
         <>
