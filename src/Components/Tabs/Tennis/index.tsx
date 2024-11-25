@@ -1,6 +1,6 @@
 import { Badge, Row, Col } from "antd";
 import { PlayCircleOutlined, TagOutlined } from "@ant-design/icons";
-
+import styles from "../tabs.module.scss"
 const tennisData = [
     {
       key: "1",
@@ -10,9 +10,9 @@ const tennisData = [
       date: "24 Nov",
       time: "9:00 PM",
       odds: [
-        { key: "1", value: "1.55", extra: "World No.1", color: "#add8e6" },
-        { key: "2", value: "2.25", extra: "Young Challenger", color: "#ffc0cb" },
-        { key: "3", value: "3.25", extra: "newYoung Challenger", color: "#ffc0cb" },
+        { key: "1", value: "1.55", extra: "1.4", color: "#add8e6" },
+        { key: "2", value: "2.25", extra: "3.5", color: "#ffc0cb" },
+        { key: "3", value: "3.25", extra: "5.6", color: "#ffc0cb" },
       ],
     },
     {
@@ -23,9 +23,9 @@ const tennisData = [
       date: "27 Nov",
       time: "5:30 PM",
       odds: [
-        { key: "1", value: "1.85", extra: "Returning Champion", color: "#add8e6" },
-        { key: "2", value: "2.05", extra: "Defending Title", color: "#ffc0cb" },
-        { key: "3", value: "2.05", extra: "Defending Title", color: "#ffc0cb" },
+        { key: "1", value: "1.85", extra: "1.0", color: "#add8e6" },
+        { key: "2", value: "2.05", extra: "1.4", color: "#ffc0cb" },
+        { key: "3", value: "2.05", extra: "2.4", color: "#ffc0cb" },
       ],
     },
     {
@@ -49,40 +49,19 @@ const TennisSection = () => {
   return (
     <div style={{ margin: "16px" }}>
       <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          padding: "10px",
-          background:
-            "linear-gradient(to right,#d4af37 0%,#d4af37 20%,#c19a6b 25%,rgba(212, 175, 55, 0) 30%,rgba(0, 0, 0, 0.7) 40%,black 50%,black 100%)",
-          color: "#fff",
-          borderRadius: "8px 8px 0px 0px",
-        }}
+       className={styles.tableWrapper}
       >
         <PlayCircleOutlined style={{ fontSize: "24px", marginRight: "16px" }} />
         <h3 style={{ margin: 0 }}>Tennis</h3>
       </div>
 
       <div
-        style={{
-          background: "#fff",
-          borderRadius: "0px 0px 8px 8px",
-
-          display: "flex",
-          flexDirection: "column",
-          overflowX: "auto",
-        }}
+        className={styles.table}
       >
         {tennisData.map((item) => (
           <div
             key={item.key}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              borderBottom: "1px solid #ddd",
-              padding: "8px",
-              minWidth: "300px",
-            }}
+            className={styles.tableHeader}
           >
             <div
               style={{
@@ -106,7 +85,7 @@ const TennisSection = () => {
               </div>
             </div>
 
-            <div style={{ flex: 1, textAlign: "center" }}>
+            <div className={styles.tagIcon}>
               <TagOutlined style={{ fontSize: "24px" }} />
             </div>
 

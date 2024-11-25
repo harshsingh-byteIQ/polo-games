@@ -1,6 +1,6 @@
 import { Badge, Row, Col } from "antd";
 import { PlayCircleOutlined, TagOutlined } from "@ant-design/icons";
-
+import styles from "../tabs.module.scss"
 const horseRidingData = [
     {
       key: "1",
@@ -10,9 +10,9 @@ const horseRidingData = [
       date: "25 Nov",
       time: "4:00 PM",
       odds: [
-        { key: "1", value: "2.5", extra: "Lightning Bolt - Top Favorite", color: "#add8e6" },
-        { key: "X", value: "3.1", extra: "Storm Chaser - Strong Contender", color: "#ffc0cb" },
-        { key: "2", value: "4.2", extra: "Shadow Runner - Dark Horse", color: "#add8e6" },
+        { key: "1", value: "2.5", extra: "8.9", color: "#add8e6" },
+        { key: "X", value: "3.1", extra: "10.7", color: "#ffc0cb" },
+        { key: "2", value: "4.2", extra: "7.2", color: "#add8e6" },
       ],
     },
     {
@@ -23,9 +23,9 @@ const horseRidingData = [
       date: "27 Nov",
       time: "5:30 PM",
       odds: [
-        { key: "1", value: "3.0", extra: "Thunderstrike - Fan Favorite", color: "#add8e6" },
-        { key: "X", value: "2.8", extra: "Golden Glory - Experienced Winner", color: "#ffc0cb" },
-        { key: "2", value: "5.0", extra: "Nightfall - Underestimated", color: "#add8e6" },
+        { key: "1", value: "3.0", extra: "1.2", color: "#add8e6" },
+        { key: "X", value: "2.8", extra: "1.9", color: "#ffc0cb" },
+        { key: "2", value: "5.0", extra: "3.2", color: "#add8e6" },
       ],
     },
   ];
@@ -35,40 +35,19 @@ const HorseRidding = () => {
   return (
     <div style={{ margin: "16px" }}>
       <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          padding: "10px",
-          background:
-            "linear-gradient(to right,#d4af37 0%,#d4af37 20%,#c19a6b 25%,rgba(212, 175, 55, 0) 30%,rgba(0, 0, 0, 0.7) 40%,black 50%,black 100%)",
-          color: "#fff",
-          borderRadius: "8px 8px 0px 0px",
-        }}
+       className={styles.tableWrapper}
       >
         <PlayCircleOutlined style={{ fontSize: "24px", marginRight: "16px" }} />
         <h3 style={{ margin: 0 }}>Horse Ridding</h3>
       </div>
 
       <div
-        style={{
-          background: "#fff",
-          borderRadius: "0px 0px 8px 8px",
-
-          display: "flex",
-          flexDirection: "column",
-          overflowX: "auto",
-        }}
+       className={styles.table}
       >
         {horseRidingData.map((item) => (
           <div
             key={item.key}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              borderBottom: "1px solid #ddd",
-              padding: "8px",
-              minWidth: "300px",
-            }}
+            className={styles.tableHeader}
           >
             <div
               style={{
@@ -76,6 +55,7 @@ const HorseRidding = () => {
                 marginRight: "16px",
                 display: "flex",
                 justifyContent: "space-between",
+                alignItems:"center"
               }}
             >
               <div>
@@ -91,8 +71,7 @@ const HorseRidding = () => {
                 {item.date} - {item.time}
               </div>
             </div>
-
-            <div style={{ flex: 1, textAlign: "center" }}>
+            <div className={styles.tagIcon}>
               <TagOutlined style={{ fontSize: "24px" }} />
             </div>
 

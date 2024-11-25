@@ -1,6 +1,6 @@
 import { Badge, Row, Col } from "antd";
 import { PlayCircleOutlined, TagOutlined } from "@ant-design/icons";
-
+import styles from "../tabs.module.scss"
 const inPlayData = [
     // Cricket
     {
@@ -11,9 +11,9 @@ const inPlayData = [
       date: "24 Nov",
       time: "3:00 PM",
       odds: [
-        { key: "1", value: "1.6", extra: "India to win", color: "#add8e6" },
-        { key: "X", value: "2.8", extra: "Draw", color: "#ffc0cb" },
-        { key: "2", value: "3.5", extra: "Australia to win", color: "#add8e6" },
+        { key: "1", value: "1.6", extra: "1.2", color: "#add8e6" },
+        { key: "X", value: "2.8", extra: "2.3", color: "#ffc0cb" },
+        { key: "2", value: "3.5", extra: "2.3", color: "#add8e6" },
       ],
     },
     // Tennis
@@ -25,9 +25,9 @@ const inPlayData = [
       date: "24 Nov",
       time: "5:00 PM",
       odds: [
-        { key: "1", value: "1.7", extra: "Novak Djokovic to win", color: "#ffc0cb" },
-        { key: "X", value: "2.5", extra: "Draw", color: "#add8e6" },
-        { key: "2", value: "2.1", extra: "Carlos Alcaraz to win", color: "#add8e6" },
+        { key: "1", value: "1.7", extra: "1.3", color: "#ffc0cb" },
+        { key: "X", value: "2.5", extra: "2.3", color: "#add8e6" },
+        { key: "2", value: "2.1", extra: "2.3", color: "#add8e6" },
       ],
     },
     // Horse Riding
@@ -39,9 +39,9 @@ const inPlayData = [
       date: "24 Nov",
       time: "4:00 PM",
       odds: [
-        { key: "1", value: "2.5", extra: "Lightning Bolt - Top Favorite", color: "#add8e6" },
-        { key: "X", value: "3.1", extra: "Storm Chaser - Strong Contender", color: "#ffc0cb" },
-        { key: "2", value: "4.2", extra: "Shadow Runner - Dark Horse", color: "#add8e6" },
+        { key: "1", value: "2.5", extra: "1.4", color: "#add8e6" },
+        { key: "X", value: "3.1", extra: "6.1", color: "#ffc0cb" },
+        { key: "2", value: "4.2", extra: "2.3", color: "#add8e6" },
       ],
     },
   ];
@@ -51,40 +51,19 @@ const InPlay = () => {
   return (
     <div style={{ margin: "16px" }}>
       <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          padding: "10px",
-          background:
-            "linear-gradient(to right,#d4af37 0%,#d4af37 20%,#c19a6b 25%,rgba(212, 175, 55, 0) 30%,rgba(0, 0, 0, 0.7) 40%,black 50%,black 100%)",
-          color: "#fff",
-          borderRadius: "8px 8px 0px 0px",
-        }}
+         className={styles.tableWrapper}
       >
         <PlayCircleOutlined style={{ fontSize: "24px", marginRight: "16px" }} />
         <h3 style={{ margin: 0 }}>Soccer</h3>
       </div>
 
       <div
-        style={{
-          background: "#fff",
-          borderRadius: "0px 0px 8px 8px",
-
-          display: "flex",
-          flexDirection: "column",
-          overflowX: "auto",
-        }}
+        className={styles.table}
       >
         {inPlayData.map((item) => (
           <div
             key={item.key}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              borderBottom: "1px solid #ddd",
-              padding: "8px",
-              minWidth: "300px",
-            }}
+            className={styles.tableHeader}
           >
             <div
               style={{
@@ -108,7 +87,7 @@ const InPlay = () => {
               </div>
             </div>
 
-            <div style={{ flex: 1, textAlign: "center" }}>
+            <div className={styles.tagIcon}>
               <TagOutlined style={{ fontSize: "24px" }} />
             </div>
 
