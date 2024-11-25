@@ -1,0 +1,91 @@
+.header {
+    height: 10vh; // Fixed height
+    width: 100%; // Full width
+    display: flex;
+    align-items: center; // Vertically align items
+    justify-content: space-between; // Ensure items stay in one row
+    padding: 0 0; // Add horizontal padding
+    background-color: black; // Background color
+    position: fixed; // Fixed at the top
+    top: 0;
+    z-index: 1000;
+    overflow: hidden; // Prevent overflow
+  }
+  
+  .logoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .logo {
+    height: 80%; // Scale logo height proportionally
+    width: auto;
+    object-fit: contain; // Prevent distortion
+  }
+  
+  .searchContainer {
+    flex: 1; // Take up available space
+    margin: 0 1vw; // Add spacing between logo and button
+  }
+  
+  .search {
+    width: 100%; // Let it adapt to container
+    max-width: 400px; // Prevent excessive width
+  }
+  
+  .buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .button {
+    background-color: #d4af37;
+    color: black;
+    font-weight: 600;
+    height: 5vh; // Fixed button height
+    width: auto; // Allow flexible width
+    padding: 0 1rem; // Horizontal padding for responsive text
+    border: 1px solid white;
+    white-space: nowrap; // Prevent text from breaking
+  }
+  
+  /* Media Queries */
+  @media (max-width: 1024px) {
+    .search {
+      max-width: 300px; // Reduce search width
+    }
+  
+    .button {
+      padding: 0 0.8rem; // Reduce padding for smaller screens
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .search {
+      max-width: 200px; // Further reduce search bar width
+    }
+  
+    .button {
+      font-size: 12px; // Adjust text size for the button
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .logo {
+      height: 60%; // Scale down the logo
+    }
+  
+    .search {
+      max-width: 150px; // Shrink search bar
+    }
+  
+    .button {
+      font-size: 10px; // Smaller font size for mobile
+      padding: 0 0.5rem;
+    }
+  }
+  

@@ -1,0 +1,30 @@
+.sidebarMenu {
+    .ant-menu-item-selected {
+      background-color: #f5f5f5 !important; 
+      font-weight: 600; 
+      color: #000 !important; 
+    }
+
+    .ant-menu-submenu-selected >.ant-menu-submenu-title{
+        background-color: #f5f5f5 !important; 
+      font-weight: 600; 
+      color: #000 !important; 
+    }
+  
+    .ant-menu-item {
+      font-weight: 500; 
+      color: #444 !important; 
+    }
+  
+    .ant-menu-item:hover {
+      background-color: #e8e8e8 !important; 
+    }
+    .ant-menu-item + .ant-menu-item {
+        border-top: 1px solid #dcdcdc; /* Gray line between items */
+      }
+    
+      .ant-menu-item:nth-child(3) {
+        border-top: none; /* Remove the extra line after "Home" */
+      }
+  }
+  
