@@ -1,67 +1,65 @@
 import { Badge, Row, Col } from "antd";
 import { PlayCircleOutlined, TagOutlined } from "@ant-design/icons";
-import styles from "../tabs.module.scss"
+import styles from "../tabs.module.scss";
 const horseRidingData = [
-    {
-      key: "1",
-      match: "Royal Derby 2024",
-      league: "Equestrian Racing",
-      status: "live",
-      date: "25 Nov",
-      time: "4:00 PM",
-      odds: [
-        { key: "1", value: "2.5", extra: "8.9", color: "#add8e6" },
-        { key: "X", value: "3.1", extra: "10.7", color: "#ffc0cb" },
-        { key: "2", value: "4.2", extra: "7.2", color: "#add8e6" },
-      ],
-    },
-    {
-      key: "2",
-      match: "National Equestrian Championship",
-      league: "Equestrian Racing",
-      status: "upcoming",
-      date: "27 Nov",
-      time: "5:30 PM",
-      odds: [
-        { key: "1", value: "3.0", extra: "1.2", color: "#add8e6" },
-        { key: "X", value: "2.8", extra: "1.9", color: "#ffc0cb" },
-        { key: "2", value: "5.0", extra: "3.2", color: "#add8e6" },
-      ],
-    },
-  ];
-  
+  {
+    key: "1",
+    match: "Royal Derby 2024",
+    league: "Equestrian Racing",
+    status: "live",
+    date: "25 Nov",
+    time: "4:00 PM",
+    odds: [
+      { key: "1", value: "2.5", extra: "8.9", color: "#add8e6" },
+      { key: "X", value: "3.1", extra: "10.7", color: "#ffc0cb" },
+      { key: "2", value: "4.2", extra: "7.2", color: "#add8e6" },
+    ],
+  },
+  {
+    key: "2",
+    match: "National Equestrian Championship",
+    league: "Equestrian Racing",
+    status: "upcoming",
+    date: "27 Nov",
+    time: "5:30 PM",
+    odds: [
+      { key: "1", value: "3.0", extra: "1.2", color: "#add8e6" },
+      { key: "X", value: "2.8", extra: "1.9", color: "#ffc0cb" },
+      { key: "2", value: "5.0", extra: "3.2", color: "#add8e6" },
+    ],
+  },
+];
 
 const HorseRidding = () => {
   return (
     <div style={{ margin: "16px" }}>
-      <div
-       className={styles.tableWrapper}
-      >
+      <div className={styles.tableWrapper}>
         <PlayCircleOutlined style={{ fontSize: "24px", marginRight: "16px" }} />
         <h3 style={{ margin: 0 }}>Horse Ridding</h3>
       </div>
 
-      <div
-       className={styles.table}
-      >
+      <div className={styles.table}>
         {horseRidingData.map((item) => (
-          <div
-            key={item.key}
-            className={styles.tableHeader}
-          >
+          <div key={item.key} className={styles.tableHeader}>
             <div
               style={{
                 flex: 2,
                 marginRight: "16px",
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems:"center"
+                alignItems: "center",
               }}
             >
               <div>
-                <div style={{ fontWeight: "bold" }}>{item.match}</div>
+                <div style={{ fontWeight: "bold" }}>
+                  {item?.match?.length > 25
+                    ? `${item?.match?.substr(0, 25)}...`
+                    : item?.match}
+                </div>
                 <div style={{ color: "#888", fontSize: "12px" }}>
-                  {item.league}
+                  {item?.league?.length > 25
+                    ? `${item?.league?.substr(0, 25)}...`
+                    : item?.league}
                 </div>
               </div>
               <div>

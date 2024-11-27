@@ -1,13 +1,50 @@
-import { useEffect, useState } from "react";
-import styles from "./topbar.module.scss"; // Import your custom styles
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState, useCallback } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Drawer, Row } from "antd";
-import SideBar from "../SideBar";
 import { MenuOutlined } from "@ant-design/icons";
+import SideBar from "../SideBar";
+import styles from "./topbar.module.scss";
 
 const TopBar = () => {
   const [activeTab, setActiveTab] = useState("home");
   const navigate = useNavigate();
+  const location = useLocation();
+
+
+  const [isSidebarVisible, setIsSidebarVisible] = useState(
+    window.innerWidth >= 768
+  );
+
+  const [openModal, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const currentWidth = window.innerWidth;
+      setIsSidebarVisible(currentWidth >= 768); 
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // Handle active tab based on location
+  useEffect(() => {
+    setActiveTab(location.pathname.substring(1));
+  }, [location]);
+
+  const handleTabClick = useCallback((key : any) => {
+    setActiveTab(key);
+    navigate(`/${key}`);
+    if (window.innerWidth < 768) {
+      setModalOpen(false); // Close drawer on mobile
+    }
+  }, [navigate]);
+
+  const toggleDrawer = useCallback(() => {
+    setModalOpen((prev) => !prev);
+  }, []);
 
   const menuItems = [
     { key: "home", label: "Home" },
@@ -18,80 +55,48 @@ const TopBar = () => {
     { key: "horse-racing", label: "Horse Racing", badge: 1 },
   ];
 
-  const handleTabClick = (key: any) => {
-    setActiveTab(key);
-    navigate(`/${key}`);
-  };
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
-  const [openModal, setModalOpen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const currentWidth = window.innerWidth;
-      setWindowWidth(currentWidth);
-      if (currentWidth < 768) {
-        setIsSidebarVisible(false);
-      } else {
-        setIsSidebarVisible(true);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      console.log(windowWidth)
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const toggleDrawer = () => {
-    setModalOpen(!openModal);
-  };
+  const renderMenuItems = (items : any) =>
+    items.map(({ key, label, badge } : any) => (
+      <div
+        key={key}
+        className={`${styles.topbar_item} ${
+          activeTab === key ? styles.active : ""
+        }`}
+        onClick={() => handleTabClick(key)}
+      >
+        {label}
+        {badge && <span className={styles.topbar_badge}>{badge}</span>}
+      </div>
+    ));
 
   return (
     <div className={styles.topbar}>
       {!isSidebarVisible && (
         <div
-          key={9}
-          className={`${styles.topbar_item}`}
+          className={styles.topbar_item}
           style={{ backgroundColor: "red" }}
-          onClick={() => setModalOpen(!openModal)}
+          onClick={toggleDrawer}
+          aria-label="Toggle Menu"
         >
-          <MenuOutlined></MenuOutlined>
+          <MenuOutlined />
         </div>
       )}
-      {menuItems.map(({ key, label, badge }) => (
-        <div
-          key={key}
-          className={`${styles.topbar_item} ${
-            activeTab === key ? styles.active : ""
-          }`}
-          onClick={() => handleTabClick(key)}
-        >
-          {label}
-          {badge && <span className={styles.topbar_badge}>{badge}</span>}
-        </div>
-      ))}
+      {renderMenuItems(menuItems)}
       <Drawer
-        title={null} // Removes title space
         placement="left"
         onClose={toggleDrawer}
-        visible={openModal}
-        width={200} // Match this with your sidebar width
+        open={openModal}
+        width={200}
         bodyStyle={{
-          padding: 0, // Remove extra padding
-          background: "#fff", // Optional: Match the sidebar background color
+          padding: 0,
+          background: "#fff",
         }}
         headerStyle={{
           display: "none",
         }}
       >
-        <>
-          <Row style={{ width: "100%", height:"10vh" , backgroundColor: "black" }}></Row>
-          <SideBar></SideBar>
-        </>
+        <Row style={{ width: "100%", height: "10vh", backgroundColor: "black" }} />
+        <SideBar />
       </Drawer>
     </div>
   );
