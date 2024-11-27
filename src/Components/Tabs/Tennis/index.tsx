@@ -87,9 +87,9 @@ const TennisSection = () => {
                 }}
               >
                 <div>
-                  <div style={{ fontWeight: "bold" }}>{item.match}</div>
+                  <div style={{ fontWeight: "bold" }}>{item?.match?.length > 25 ? `${item?.match?.substr(0,25)}...` :item?.match}</div>
                   <div style={{ color: "#888", fontSize: "12px" }}>
-                    {item.league}
+                    {item?.league?.length > 25 ? `${item?.league?.substr(0,25)}...` :item?.league}
                   </div>
                 </div>
                 <div>

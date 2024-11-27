@@ -1,8 +1,11 @@
 import { HomeOutlined, PlayCircleOutlined, TrophyOutlined, SmileOutlined } from "@ant-design/icons";
 import styles from "./footer.module.scss"
+import { useNavigate } from "react-router-dom";
 
 
 const DynamincFooter = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.footer}>
       <div className={styles.footer_item}>
@@ -13,7 +16,9 @@ const DynamincFooter = () => {
         <PlayCircleOutlined className={styles.footer_icon} />
         <span>In Play</span>
       </div>
-      <div className={`${styles.footer_item} ${styles.top_icon}`}>
+      <div onClick={() => {
+        navigate("/home")
+      }} className={`${styles.footer_item} ${styles.top_icon}`}>
         <HomeOutlined className={styles.footer_icon} />
       </div>
       <div className={styles.footer_item}>
