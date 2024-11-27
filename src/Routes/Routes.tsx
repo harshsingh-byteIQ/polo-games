@@ -5,6 +5,8 @@ import TennisSection from "../Components/Tabs/Tennis";
 import HorseRidding from "../Components/Tabs/HorseRidding";
 import InPlay from "../Components/Tabs/InPlay";
 import Footer from "../Components/Footer";
+import GameGallery from "../Components/GameGallery";
+import CasinoGallery from "../Components/CasinoGallery";
 
 interface RouteBase {
   path: string;
@@ -33,6 +35,8 @@ export const globalRoutes = [
         <SoccerSection></SoccerSection>
         <TennisSection></TennisSection>
         <HorseRidding></HorseRidding>
+        <GameGallery></GameGallery>
+        <CasinoGallery></CasinoGallery>
         <Footer></Footer>
       </>
     ),
@@ -46,6 +50,8 @@ export const globalRoutes = [
         <SoccerSection></SoccerSection>
         <TennisSection></TennisSection>
         <HorseRidding></HorseRidding>
+        <GameGallery></GameGallery>
+        <CasinoGallery></CasinoGallery>
         <Footer></Footer>
       </>
     ),
