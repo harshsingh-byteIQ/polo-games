@@ -18,6 +18,9 @@ const TopBar = () => {
   const [openModal, setModalOpen] = useState(false);
 
   useEffect(() => {
+    if (window.innerWidth < 768) {
+      setModalOpen(false); 
+    }
     const handleResize = () => {
       const currentWidth = window.innerWidth;
       setIsSidebarVisible(currentWidth >= 768); 
@@ -38,7 +41,7 @@ const TopBar = () => {
     setActiveTab(key);
     navigate(`/${key}`);
     if (window.innerWidth < 768) {
-      setModalOpen(false); // Close drawer on mobile
+      setModalOpen(false); 
     }
   }, [navigate]);
 
