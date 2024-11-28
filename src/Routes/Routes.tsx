@@ -7,6 +7,7 @@ import InPlay from "../Components/Tabs/InPlay";
 import Footer from "../Components/Footer";
 import GameGallery from "../Components/GameGallery";
 import CasinoGallery from "../Components/CasinoGallery";
+import SliderComponent from "../Components/Slider";
 
 interface RouteBase {
   path: string;
@@ -30,6 +31,7 @@ export const globalRoutes = [
     path: "",
     element: (
       <>
+        <SliderComponent></SliderComponent>
         <InPlay></InPlay>
         <CricketSection></CricketSection>
         <SoccerSection></SoccerSection>
@@ -45,6 +47,7 @@ export const globalRoutes = [
     path: "home",
     element: (
       <>
+        <SliderComponent></SliderComponent>
         <InPlay></InPlay>
         <CricketSection></CricketSection>
         <SoccerSection></SoccerSection>
@@ -72,32 +75,32 @@ export const globalRoutes = [
   {
     path: "cricket",
     element: <>
-    <CricketSection></CricketSection>
-    <Footer></Footer>
-    </>
-  },
-  {
-    path: "soccer",
-    element: 
-    <>
-    <SoccerSection></SoccerSection>,
-    <Footer></Footer>
-    </>
-  },
-  {
-    path: "tennis",
-    element: 
-    <>
-      <TennisSection></TennisSection>,
+      <CricketSection></CricketSection>
       <Footer></Footer>
     </>
   },
   {
+    path: "soccer",
+    element:
+      <>
+        <SoccerSection></SoccerSection>,
+        <Footer></Footer>
+      </>
+  },
+  {
+    path: "tennis",
+    element:
+      <>
+        <TennisSection></TennisSection>,
+        <Footer></Footer>
+      </>
+  },
+  {
     path: "horse-racing",
-    element: 
-    <>
-    <HorseRidding></HorseRidding>
-    <Footer></Footer>
-    </>
+    element:
+      <>
+        <HorseRidding></HorseRidding>
+        <Footer></Footer>
+      </>
   },
 ];
