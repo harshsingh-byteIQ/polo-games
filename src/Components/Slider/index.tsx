@@ -1,4 +1,3 @@
-import Slider from 'react-slick';
 import "./yo.css";
 import { Col, Row } from 'antd';
 import { useEffect, useState } from 'react';
