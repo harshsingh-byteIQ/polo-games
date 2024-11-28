@@ -30,7 +30,29 @@
   border-bottom: 1px solid #ddd;
   padding: 8px;
   min-width: 300px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; 
+  background-color: #fff; 
 }
+
+.tableHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(28, 73, 150, 0.2); 
+  transition: width 0.8s ease-in-out;
+  z-index: 0; 
+}
+
+.tableHeader:hover::before {
+  width: 100%; 
+}
+
+
 
 .tagIcon {
   flex: 1;

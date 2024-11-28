@@ -3,10 +3,12 @@ import { PlayCircleOutlined, TagOutlined } from "@ant-design/icons";
 import styles from "../tabs.module.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const TennisSection = () => {
   const [datasource, setDataSource] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const ModifyData = (data: []) => {
     const ModifiedData = data?.map((ele: any) => {
@@ -15,6 +17,7 @@ const TennisSection = () => {
         status: ele?.iplay ? "live" : "upcoming",
         league: ele?.cname,
         time: ele?.stime,
+        gameId: ele?.gameId,
         odds: [
           {
             key: "1",
@@ -65,6 +68,10 @@ const TennisSection = () => {
     getApiData();
   }, []);
 
+  const handleRowClick = (id: any) => {
+    navigate(`/cricket/${id}`)
+  }
+
   return (
     <Spin spinning={loading}>
       <div style={{ margin: "16px" }}>
@@ -77,7 +84,7 @@ const TennisSection = () => {
 
         <div className={styles.table}>
           {datasource.map((item : any) => (
-            <div key={item.key} className={styles.tableHeader}>
+            <div onClick={() => handleRowClick(item?.gameId)} key={item.key} className={styles.tableHeader}>
               <div
                 style={{
                   flex: 2,
