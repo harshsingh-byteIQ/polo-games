@@ -50,14 +50,32 @@ const TopBar = () => {
   }, []);
 
   const menuItems = [
-    { key: "home", label: "Home" },
+    { key: "home", label: "Home"  , badge: -1},
     { key: "in-play", label: "In Play", badge: 8 },
     { key: "cricket", label: "Cricket", badge: 5 },
     { key: "soccer", label: "Soccer", badge: 2 },
     { key: "tennis", label: "Tennis", badge: 2 },
     { key: "horse-racing", label: "Horse Racing", badge: 1 },
+    { key: "rugby-union", label: "Rugby Union" },
+    { key: "golf", label: "Golf" },
+    { key: "esports", label: "Esports" },
+    { key: "mixed-martial-arts", label: "Mixed Martial Arts" },
+    { key: "gaelic-games", label: "Gaelic Games" },
+    { key: "volleyball", label: "Volleyball" },
+    { key: "handball", label: "Handball" },
+    { key: "australian-rules", label: "Australian Rules" },
+    { key: "ice-hockey", label: "Ice Hockey" },
+    { key: "basketball", label: "Basketball" },
+    { key: "baseball", label: "Baseball" },
+    { key: "american-football", label: "American Football" },
+    { key: "snooker", label: "Snooker" },
+    { key: "darts", label: "Darts" },
+    { key: "cycling", label: "Cycling" },
+    { key: "special-bets", label: "Special Bets" },
+    { key: "motor-sport", label: "Motor Sport" },
+    { key: "table-tennis", label: "Table Tennis" },
   ];
-
+  
   const renderMenuItems = (items : any) =>
     items.map(({ key, label, badge } : any) => (
       <div
@@ -65,10 +83,10 @@ const TopBar = () => {
         className={`${styles.topbar_item} ${
           activeTab === key ? styles.active : ""
         }`}
-        onClick={() => handleTabClick(key)}
+        onClick={() => badge && badge !== 0 && handleTabClick(key)}
       >
         {label}
-        {badge && <span className={styles.topbar_badge}>{badge}</span>}
+        {badge && badge !== -1 && <span className={styles.topbar_badge}>{badge}</span>}
       </div>
     ));
 
