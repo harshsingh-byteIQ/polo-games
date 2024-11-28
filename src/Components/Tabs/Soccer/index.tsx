@@ -3,6 +3,7 @@ import { PlayCircleOutlined, TagOutlined } from "@ant-design/icons";
 import styles from "../tabs.module.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -10,6 +11,7 @@ const SoccerSection = () => {
 
   const [datasource, setDataSource] = useState<any>([]);
 const [loading, setLoading] = useState<boolean>(false);
+ const navigate = useNavigate();
 
 const ModifyData = (data: []) => {
   const ModifiedData = data?.map((ele: any) => {
@@ -18,6 +20,7 @@ const ModifyData = (data: []) => {
       status: ele?.iplay? "live" : "upcoming",
       league: ele?.cname,
       time: ele?.stime,
+      gameId:ele?.gmid,
       odds: [
         { key: "1", value: ele?.section[0]?.odds[0]?.odds, extra: ele?.section[0]?.odds[1]?.odds, color: "#add8e6" },
         { key: "2", value: ele?.section[1]?.odds[0]?.odds, extra: ele?.section[1]?.odds[1]?.odds, color: "#ffc0cb" },
@@ -50,6 +53,10 @@ const getApiData = async () => {
   }
 };
 
+const handleRowClick = (id: any) => {
+  navigate(`/games/${id}`)
+}
+
 useEffect(() => {
   getApiData();
 }, []);
@@ -66,7 +73,7 @@ useEffect(() => {
 
         <div className={styles.table}>
           {datasource.map((item : any) => (
-            <div key={item.key} className={styles.tableHeader}>
+            <div onClick={() => handleRowClick(item?.gameId)} key={item.key} className={styles.tableHeader}>
               <div
                 style={{
                   flex: 2,

@@ -3,11 +3,11 @@ import CricketSection from "../Components/Tabs/Cricket";
 import SoccerSection from "../Components/Tabs/Soccer";
 import TennisSection from "../Components/Tabs/Tennis";
 import HorseRidding from "../Components/Tabs/HorseRidding";
-import InPlay from "../Components/Tabs/InPlay";
 import Footer from "../Components/Footer";
 import GameGallery from "../Components/GameGallery";
 import CasinoGallery from "../Components/CasinoGallery";
 import SliderComponent from "../Components/Slider";
+import MatchPage from "../Components/MatchPage";
 
 interface RouteBase {
   path: string;
@@ -32,7 +32,6 @@ export const globalRoutes = [
     element: (
       <>
         <SliderComponent></SliderComponent>
-        <InPlay></InPlay>
         <CricketSection></CricketSection>
         <SoccerSection></SoccerSection>
         <TennisSection></TennisSection>
@@ -48,7 +47,6 @@ export const globalRoutes = [
     element: (
       <>
         <SliderComponent></SliderComponent>
-        <InPlay></InPlay>
         <CricketSection></CricketSection>
         <SoccerSection></SoccerSection>
         <TennisSection></TennisSection>
@@ -63,7 +61,6 @@ export const globalRoutes = [
     path: "in-play",
     element: (
       <>
-        <InPlay></InPlay>
         <CricketSection></CricketSection>
         <SoccerSection></SoccerSection>
         <TennisSection></TennisSection>
@@ -76,6 +73,20 @@ export const globalRoutes = [
     path: "cricket",
     element: <>
       <CricketSection></CricketSection>
+      <Footer></Footer>
+    </>
+  },
+  {
+    path: "cricket/:id",
+    element: <>
+      <MatchPage apiurl={"https://data.shamexch.xyz/getbm"}></MatchPage>
+      <Footer></Footer>
+    </>
+  },
+  {
+    path: "games/:id",
+    element: <>
+      <MatchPage apiurl={"https://pro.shamexch.xyz/getdatasports"}></MatchPage>
       <Footer></Footer>
     </>
   },

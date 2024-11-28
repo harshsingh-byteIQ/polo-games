@@ -3,19 +3,21 @@ import { PlayCircleOutlined, TagOutlined } from "@ant-design/icons";
 import styles from "../tabs.module.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CricketSection = () => {
   const [datasource, setDataSource] = useState<any>([]);
+  const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
 
   const ModifyData = (data: []) => {
     const ModifiedData = data?.map((ele: any) => {
       const tempSplit = ele?.eventName?.split("/");
-      console.log(tempSplit);
       const obj = {
         match: tempSplit[0],
         status: ele?.inPlay === "True" ? "live" : "upcoming",
         time: tempSplit[1],
+        gameId: ele?.gameId,
         odds: [
           { key: "1", value: ele?.back1, extra: ele?.back11, color: "#add8e6" },
           { key: "2", value: ele?.back12, extra: ele?.lay1, color: "#ffc0cb" },
@@ -51,6 +53,10 @@ const CricketSection = () => {
     getApiData();
   }, []);
 
+  const handleRowClick = (id: any) => {
+    navigate(`/cricket/${id}`)
+  }
+
   return (
     <Spin spinning={loading}>
       <div style={{ margin: "16px" }}>
@@ -63,7 +69,7 @@ const CricketSection = () => {
 
         <div className={styles.table}>
           {datasource.map((item: any) => (
-            <div key={item.key} className={styles.tableHeader}>
+            <div onClick={() => handleRowClick(item?.gameId)} key={item.key} className={styles.tableHeader}>
               <div
                 style={{
                   flex: 2,
@@ -74,9 +80,9 @@ const CricketSection = () => {
                 }}
               >
                 <div>
-                <div style={{ fontWeight: "bold" }}>{item?.match?.length > 25 ? `${item?.match?.substr(0,25)}...` :item?.match}</div>
+                  <div style={{ fontWeight: "bold" }}>{item?.match?.length > 25 ? `${item?.match?.substr(0, 25)}...` : item?.match}</div>
                   <div style={{ color: "#888", fontSize: "12px" }}>
-                    {item?.league?.length > 25 ? `${item?.league?.substr(0,25)}...` :item?.league}
+                    {item?.league?.length > 25 ? `${item?.league?.substr(0, 25)}...` : item?.league}
                   </div>
                 </div>
                 <div>
