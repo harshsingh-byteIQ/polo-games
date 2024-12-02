@@ -1,13 +1,9 @@
 import { Button, Col, Input, Row } from "antd";
 import styles from "./header.module.scss"; // Use CSS Modules
-import logo from "../../assets/logo.jpeg";
-
 const HeaderComponent = () => {
   return (
     <Row align="middle" justify="space-between" className={styles.header}>
-      <Col className={styles.logoContainer}>
-        <img className={styles.logo} src={logo} alt="Logo" />
-      </Col>
+      
       <Col flex="1" className={styles.searchContainer}>
         <Input.Search
           placeholder="Search Event..."
