@@ -1,4 +1,4 @@
-import { Layout, Menu } from "antd";
+import { Col, Layout, Menu } from "antd";
 import {
   HomeOutlined,
   PlayCircleOutlined,
@@ -6,6 +6,8 @@ import {
   RadarChartOutlined,
 } from "@ant-design/icons";
 import styles from "./sidebar.module.scss";
+import logo from "../../assets/logo.jpeg";
+
 
 const { Sider } = Layout;
 
@@ -79,14 +81,17 @@ const SideBar = () => {
   return (
     <Sider
       style={{
-        background: "#fff",
+        background: "#333",
         borderRight: "1px solid #dcdcdc",
       }}
     >
+      <Col className={styles.logoContainer}>
+        <img className={styles.logo} src={logo} alt="Logo" />
+      </Col>
       <Menu
         mode="inline"
         defaultSelectedKeys={["home"]}
-        defaultOpenKeys={[]} // No open menus by default
+        defaultOpenKeys={[]}
         items={menuItems}
         className={styles.sidebarMenu}
       />

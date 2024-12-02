@@ -1,5 +1,5 @@
 import { Badge, Row, Col, message, Spin } from "antd";
-import { PlayCircleOutlined, TagOutlined } from "@ant-design/icons";
+import { PlayCircleOutlined } from "@ant-design/icons";
 import styles from "../tabs.module.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -107,9 +107,6 @@ const TennisSection = () => {
                 </div>
               </div>
 
-              <div className={styles.tagIcon}>
-                <TagOutlined style={{ fontSize: "24px" }} />
-              </div>
 
               <Row gutter={8} style={{ flex: 3 }}>
                 {item.odds.map((odd : any) => (
